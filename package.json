@@ -1,0 +1,30 @@
+{
+  "name": "top-of-the-morning",
+  "version": "0.0.1",
+  "description": "Read the news and get the weather in bed",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nhashmi/top-of-the-morning.git"
+  },
+  "keywords": [
+    "NPR",
+    "reddit",
+    "Angular",
+    "Express",
+    "Node"
+  ],
+  "author": "Nabil Hashmi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhashmi/top-of-the-morning/issues"
+  },
+  "homepage": "https://github.com/nhashmi/top-of-the-morning",
+  "dependencies": {
+    "express": "4.13.4",
+    "ejs": "2.4.1"
+  }
+}

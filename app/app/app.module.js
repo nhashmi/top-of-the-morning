@@ -3,5 +3,8 @@
 
   app.controller('AppController', function() {
     this.date = Date.now();
+    this.user = {
+      firstName: 'Sarah'
+    }
   });
 })();

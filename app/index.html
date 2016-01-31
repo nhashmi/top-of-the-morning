@@ -5,6 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Top of the Morning</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
   <link rel="stylesheet" href="./assets/css/app.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="./app/app.module.js"></script>
@@ -16,7 +18,7 @@
 <body ng-controller="AppController as app">
   <article>
     <section class="header">
-      <h1>Top of the Morning</h1>
+      <h1>Top of the Morning to you, {{ app.user.firstName }}!</h1>
       <h2>{{ app.date | date: "EEEE, MMMM d h:mm" }}</h2>
     </section>
     <section ng-controller="WeatherController as weather">
