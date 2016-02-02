@@ -24,7 +24,8 @@
   },
   "homepage": "https://github.com/nhashmi/top-of-the-morning",
   "dependencies": {
-    "express": "4.13.4",
-    "ejs": "2.4.1"
+    "dotenv": "^2.0.0",
+    "ejs": "2.4.1",
+    "express": "4.13.4"
   }
 }

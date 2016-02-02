@@ -13,7 +13,6 @@ app.use(express.static(path.join(__dirname, '/app')));
 
 app.get('/', routes.index);
 
-console.log('Listening on port 3000');
 app.listen(3000);
 
 // JSON API

@@ -23,7 +23,12 @@
     </section>
     <section ng-controller="WeatherController as weather">
       <h1>Today's weather</h1>
-      <h2>{{ weather.forecast }}</h2>
+      <h2>{{ weather.description }}</h2>
+      <ul>
+        <li>Now: {{ weather.temperature }}&deg;F</li>
+        <li>Low: {{ weather.low }}&deg;F</li>
+        <li>High: {{ weather.high }}&deg;F</li>
+      </ul>
     </section>
     <section ng-controller="NprController as npr">
       <h1>NPR</h1>
