@@ -7,14 +7,14 @@ var express = require('express'),
 var app = express();
 
 app.engine('html', require('ejs').renderFile);
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 app.set('views', __dirname + '/app');
 app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '/app')));
 
 app.get('/', routes.index);
 
-app.listen(3000);
+app.listen(5000);
 
 // JSON API
 
