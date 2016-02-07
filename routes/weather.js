@@ -1,5 +1,8 @@
 var http = require('http');
-require('dotenv').config();
+// Load vars from .env in development
+if ((process.env.NODE_ENV || 'development') === 'development') {
+  require('dotenv').config();
+}
 var options = {
   host: 'api.openweathermap.org',
   port: '80',
