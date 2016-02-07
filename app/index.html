@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="./assets/css/app.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   <script src="./app/app.module.js"></script>
-  <script src="./app/components/weather/weatherController.js"></script>
-  <script src="./app/components/npr/nprController.js"></script>
-  <script src="./app/components/nyt/nytController.js"></script>
-  <script src="./app/components/reddit/redditController.js"></script>
+  <script src="./app/components/npr/nprFilters.js"></script>
+  <script src="./app/components/weather/weather.js"></script>
+  <script src="./app/components/npr/npr.js"></script>
+  <script src="./app/components/nyt/nyt.js"></script>
+  <script src="./app/components/reddit/reddit.js"></script>
 </head>
 <body ng-controller="AppController as app">
   <article>
@@ -32,7 +33,26 @@
     </section>
     <section ng-controller="NprController as npr">
       <h1>NPR</h1>
-      <h2>{{ npr.stories }}</h2>
+      <npr-player></npr-player>
+      <h2>Top Stories</h2>
+      <div ng-repeat="story in npr.topStories">
+        <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{ story | nprTitle }}<h3>
+        <h4>{{ story | nprProgram }}</h4>
+        <p ng-show='story.expanded' ng-click="playStory(story)"
+        ng-bind-html="story | nprTeaser"></p>
+      </div>
+      <h2>Health Care</h2>
+      <div ng-repeat="story in npr.healthStories">
+        <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{ story | nprTitle }}<h3>
+        <h4>{{ story | nprProgram }}</h4>
+        <p ng-show='story.expanded' ng-click="playStory(story)">{{ story | nprTeaser }}</p>
+      </div>
+      <h2>Economics</h2>
+      <div ng-repeat="story in npr.econStories">
+        <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{ story | nprTitle }}<h3>
+        <h4>{{ story | nprProgram }}</h4>
+        <p ng-show='story.expanded' ng-click="playStory(story)">{{ story | nprTeaser }}</p>
+      </div>
     </section>
     <section ng-controller="NytController as nyt">
       <h1>New York Times</h1>

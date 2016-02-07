@@ -1,7 +1,8 @@
 var express = require('express'),
     routes = require('./routes'),
     path = require('path'),
-    weather = require('./routes/weather');
+    weather = require('./routes/weather'),
+    npr = require('./routes/npr');
 
 var app = express();
 
@@ -18,3 +19,6 @@ app.listen(3000);
 // JSON API
 
 app.get('/weather', weather.today);
+app.get('/npr/top', npr.top);
+app.get('/npr/health', npr.health);
+app.get('/npr/econ', npr.econ);
