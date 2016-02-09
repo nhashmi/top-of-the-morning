@@ -3,8 +3,7 @@ var express = require('express'),
     path = require('path'),
     weather = require('./routes/weather'),
     npr = require('./routes/npr'),
-    nyt = require('./routes/nyt'),
-    reddit = require('./routes/reddit');
+    nyt = require('./routes/nyt');
 
 var app = express();
 
@@ -26,4 +25,3 @@ app.get('/npr/health', npr.health);
 app.get('/npr/econ', npr.econ);
 app.get('/nyt/home', nyt.home);
 app.get('/nyt/health', nyt.health);
-app.get('/reddit', reddit.relationships);
