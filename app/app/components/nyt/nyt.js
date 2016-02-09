@@ -6,8 +6,13 @@
     nyt.homeStories = {};
     nyt.healthStories = {};
 
+    nyt.expanded = false;
     $scope.homeExpanded = false;
     $scope.healthExpanded = false;
+
+    nyt.expand = function() {
+      this.expanded = !this.expanded;
+    }
 
     $scope.expandHome = function() {
       $scope.homeExpanded = !$scope.homeExpanded;

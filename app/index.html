@@ -15,7 +15,6 @@
   <script src="./app/components/weather/weather.js"></script>
   <script src="./app/components/npr/npr.js"></script>
   <script src="./app/components/nyt/nyt.js"></script>
-  <script src="./app/components/reddit/reddit.js"></script>
 </head>
 <body ng-controller="AppController as app">
   <article>
@@ -26,7 +25,8 @@
     <section ng-controller="WeatherController as weather">
       <h1>Today's weather</h1>
       <h2>This morning: {{ weather.description }}, {{ weather.morning | number:0 }}&deg;F</h2>
-      <h3>High of {{ weather.high | number:0 }}&deg; and a low of {{ weather.low | number:0 }}</h3>
+      <h3>High of {{ weather.high | number:0 }}&deg; and a low of {{ weather.low
+        | number:0 }}&deg;</h3>
     </section>
     <section ng-controller="NprController as npr">
       <h1 ng-click="npr.expand()">NPR</h1>
@@ -62,7 +62,8 @@
       </div>
     </section>
     <section ng-controller="NytController as nyt">
-      <h1>New York Times</h1>
+      <h1 ng-click="nyt.expand()">New York Times</h1>
+      <div ng-show="nyt.expanded">
       <h2 ng-click="expandHome()">Top Stories</h2>
       <div ng-show="homeExpanded">
         <div ng-repeat="story in nyt.homeStories | limitTo:10 track by $index">
@@ -80,13 +81,6 @@
           <img ng-src="{{ story.multimedia[0].url }}" alt="{{ story.multimedia[1].caption }}"/>
         </div>
       </div>
-    </section>
-    <section ng-controller="RedditController as reddit">
-      <h1 ng-click="reddit.expand()">Reddit</h1>
-      <div ng-show="reddit.expanded">
-        <div ng-repeat="post in reddit.posts track by $index">
-          <h2>{{ post }}</h2>
-        </div>
       </div>
     </section>
   </article>
