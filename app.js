@@ -9,9 +9,9 @@ var app = express();
 
 app.engine('html', require('ejs').renderFile);
 app.set('port', process.env.PORT || 5000);
-app.set('views', __dirname + '/app');
+app.set('views', __dirname + '/src');
 app.set('view engine', 'html');
-app.use(express.static(path.join(__dirname, '/app')));
+app.use(express.static(path.join(__dirname, '/src')));
 
 app.get('/', routes.index);
 
