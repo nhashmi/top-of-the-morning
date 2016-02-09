@@ -6,7 +6,7 @@
     weather.forecast = 'Looking out the window...';
 
     $http.get('/weather').then(function(res) {
-      weather.temperature = res.data.temperature;
+      weather.morning = res.data.morning;
       weather.low = res.data.low;
       weather.high = res.data.high;
       weather.description = res.data.description;

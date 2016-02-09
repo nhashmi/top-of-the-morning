@@ -6,7 +6,7 @@ if ((process.env.NODE_ENV || 'development') === 'development') {
 var options = {
   host: 'api.openweathermap.org',
   port: '80',
-  path: '/data/2.5/weather?zip=19130,us&appid=' + process.env.OPEN_WEATHER_API_KEY+ '&units=imperial'
+  path: '/data/2.5/forecast/daily?lat=39.9500&lon=-75.1667&cnt=3&appid=' + process.env.OPEN_WEATHER_API_KEY+ '&units=imperial'
 }
 var todaysForecast = '';
 
@@ -23,10 +23,11 @@ http.get(options, function(response) {
 });
 
 exports.today = function(req, res) {
+  var temp = todaysForecast.list[0].temp;
   res.json({
-    temperature: todaysForecast.main.temp,
-    low: todaysForecast.main.temp_min,
-    high: todaysForecast.main.temp_max,
-    description: todaysForecast.weather[0].description
+    morning: temp.morn,
+    low: temp.min,
+    high: temp.max,
+    description: todaysForecast.list[0].weather[0].description
   });
 }

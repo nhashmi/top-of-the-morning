@@ -10,16 +10,36 @@
 
   app.controller('NprController', ['$http', '$scope', '$sce', function($http, $scope, $sce) {
     var npr = this;
+    npr.expanded = false;
+    npr.topExpanded = false;
+    npr.healthExpanded = false;
+    npr.econExpanded = false;
     npr.topStories = {};
     npr.healthStories = {};
     npr.econStories = {};
+
+    npr.expand = function() {
+      npr.expanded = !npr.expanded;
+    }
+
+    npr.expandTop = function() {
+      npr.topExpanded = !npr.topExpanded;
+    }
+
+    npr.expandHealth = function() {
+      npr.healthExpanded = !npr.healthExpanded;
+    }
+
+    npr.expandEcon = function() {
+      npr.econExpanded = !npr.econExpanded;
+    }
+
     $scope.currentStory = '';
     $scope.player = {
       url: $sce.trustAsResourceUrl(npr.currentStory)
     }
 
     $scope.expandStory = function(story) {
-      console.log(!story.expanded);
       story.expanded = !story.expanded;
     }
 
@@ -27,7 +47,6 @@
       story.played = true;
       var audio = story.audio[0].format.mp3[0].$text;
       $scope.currentStory = $sce.trustAsResourceUrl(audio);
-      console.log('current story is:,', $scope.currentStory);
     }
 
     $http.get('/npr/top').then(function(res) {
@@ -36,7 +55,6 @@
         return story.audio;
       }
       var audioStories = allStories.filter(hasAudio);
-      console.dir(audioStories);
       npr.topStories = audioStories;
     });
 
@@ -46,7 +64,6 @@
         return story.audio;
       }
       var audioStories = allStories.filter(hasAudio);
-      console.dir(audioStories);
       npr.healthStories = audioStories;
     });
 
@@ -56,7 +73,6 @@
         return story.audio;
       }
       var audioStories = allStories.filter(hasAudio);
-      console.dir(audioStories);
       npr.econStories = audioStories;
     });
 

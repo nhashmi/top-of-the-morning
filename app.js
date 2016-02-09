@@ -2,7 +2,9 @@ var express = require('express'),
     routes = require('./routes'),
     path = require('path'),
     weather = require('./routes/weather'),
-    npr = require('./routes/npr');
+    npr = require('./routes/npr'),
+    nyt = require('./routes/nyt'),
+    reddit = require('./routes/reddit');
 
 var app = express();
 
@@ -22,3 +24,6 @@ app.get('/weather', weather.today);
 app.get('/npr/top', npr.top);
 app.get('/npr/health', npr.health);
 app.get('/npr/econ', npr.econ);
+app.get('/nyt/home', nyt.home);
+app.get('/nyt/health', nyt.health);
+app.get('/reddit', reddit.relationships);
