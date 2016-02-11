@@ -49,32 +49,57 @@
       $scope.currentStory = $sce.trustAsResourceUrl(audio);
     }
 
-    $http.get('/npr/top').then(function(res) {
-      var allStories = res.data.stories.story;
-      function hasAudio(story) {
-        return story.audio;
-      }
-      var audioStories = allStories.filter(hasAudio);
-      npr.topStories = audioStories;
-    });
+    $scope.nprTopFetched = false;
+    $scope.nprHealthFetched = false;
+    $scope.nprEconFetched = false;
 
-    $http.get('/npr/health').then(function(res) {
-      var allStories = res.data.stories.story;
-      function hasAudio(story) {
-        return story.audio;
+    $scope.getTopStories = function() {
+      if ($scope.nprTopFetched) {
+        return false;
+      } else {
+        $http.get('/npr/top').then(function(res) {
+          $scope.nprTopFetched = true;
+          var allStories = res.data.stories.story;
+          function hasAudio(story) {
+            return story.audio;
+          }
+          var audioStories = allStories.filter(hasAudio);
+          npr.topStories = audioStories;
+        });
       }
-      var audioStories = allStories.filter(hasAudio);
-      npr.healthStories = audioStories;
-    });
+    }
 
-    $http.get('/npr/econ').then(function(res) {
-      var allStories = res.data.stories.story;
-      function hasAudio(story) {
-        return story.audio;
+
+    $scope.getHealthStories = function() {
+      if ($scope.nprHealthFetched) {
+        return false;
+      } else {
+        $http.get('/npr/health').then(function(res) {
+          $scope.nprHealthFetched = true;
+          var allStories = res.data.stories.story;
+          function hasAudio(story) {
+            return story.audio;
+          }
+          var audioStories = allStories.filter(hasAudio);
+          npr.healthStories = audioStories;
+        });
       }
-      var audioStories = allStories.filter(hasAudio);
-      npr.econStories = audioStories;
-    });
+    }
 
+    $scope.getEconStories = function() {
+      if ($scope.nprEconFetched) {
+        return false;
+      } else {
+        $http.get('/npr/econ').then(function(res) {
+          $scope.nprEconFetched = true;
+          var allStories = res.data.stories.story;
+          function hasAudio(story) {
+            return story.audio;
+          }
+          var audioStories = allStories.filter(hasAudio);
+          npr.econStories = audioStories;
+        });
+      }
+    }
   }]);
 })();

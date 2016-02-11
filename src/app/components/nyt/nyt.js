@@ -22,14 +22,31 @@
       $scope.healthExpanded = !$scope.healthExpanded;
     }
 
-    $http.get('/nyt/home').then(function(res) {
-      var stories = res.data.stories.results;
-      nyt.homeStories = stories;
-    });
+    $scope.homeFetched = false;
+    $scope.healthFetched = false;
 
-    $http.get('/nyt/health').then(function(res) {
-      var stories = res.data.stories.results;
-      nyt.healthStories = stories;
-    });
+    $scope.getHome = function() {
+      if ($scope.homeFetched) {
+        return false;
+      } else {
+        $http.get('/nyt/home').then(function(res) {
+          $scope.homeFetched = true;
+          var stories = res.data.stories.results;
+          nyt.homeStories = stories;
+        });
+      }
+    }
+
+    $scope.getHealth = function() {
+      if ($scope.healthFetched) {
+        return false;
+      } else {
+        $http.get('/nyt/health').then(function(res) {
+          $scope.healthFetched = true;
+          var stories = res.data.stories.results;
+          nyt.healthStories = stories;
+        });
+      }
+    }
   }]);
 })();

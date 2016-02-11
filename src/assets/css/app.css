@@ -74,6 +74,10 @@ h2 {
   color: #e0e0e0;
 }
 
+.story-nyt a:visited {
+  color: #b28a00;
+}
+
 footer {
   background-color: #ffc500;
   color: #232534;
@@ -101,6 +105,6 @@ footer li:last-of-type {
 }
 
 .faded {
-  color: #b3b3b3;
+  color: #B28A00;
 }
 
