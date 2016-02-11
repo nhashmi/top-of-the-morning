@@ -20,21 +20,15 @@
   <article>
     <section class="header">
       <h1>Top of the Morning to you, {{ app.user.firstName }}!</h1>
-      <h2>{{ app.date | date: "EEEE, MMMM d h:mm" }}</h2>
+      <h2>{{ app.date | date: "EEEE, MMMM d, h:mm a" }}</h2>
     </section>
-    <section ng-controller="WeatherController as weather">
-      <h1>Today's weather</h1>
-      <h2>This morning: {{ weather.description }}, {{ weather.morning | number:0 }}&deg;F</h2>
-      <h3>High of {{ weather.high | number:0 }}&deg; and a low of {{ weather.low
-        | number:0 }}&deg;</h3>
-    </section>
-    <section ng-controller="NprController as npr">
+    <section class="section-media" ng-controller="NprController as npr">
       <h1 ng-click="npr.expand()">NPR</h1>
       <div ng-show="npr.expanded">
       <npr-player></npr-player>
       <h2 ng-click="npr.expandTop()">Top Stories</h2>
       <div ng-show="npr.topExpanded">
-      <div ng-repeat="story in npr.topStories track by $index">
+      <div class="story-npr" ng-repeat="story in npr.topStories track by $index">
         <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{
           story | nprTitle }}</h3>
         <h4>{{ story | nprProgram }}</h4>
@@ -44,7 +38,7 @@
       </div>
       <h2 ng-click="npr.expandHealth()">Health Care</h2>
       <div ng-show="npr.healthExpanded">
-      <div ng-repeat="story in npr.healthStories track by $index">
+      <div class="story-npr" ng-repeat="story in npr.healthStories track by $index">
         <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{
           story | nprTitle }}</h3>
         <h4>{{ story | nprProgram }}</h4>
@@ -53,7 +47,7 @@
       </div>
       <h2 ng-click="npr.expandEcon()">Economics</h2>
       <div ng-show="npr.econExpanded">
-      <div ng-repeat="story in npr.econStories track by $index">
+      <div class="story-npr" ng-repeat="story in npr.econStories track by $index">
         <h3 ng-class="{faded: story.played}" ng-click="expandStory(story)">{{ story | nprTitle }}<h3>
         <h4>{{ story | nprProgram }}</h4>
         <p ng-show='story.expanded' ng-click="playStory(story)">{{ story | nprTeaser }}</p>
@@ -61,28 +55,34 @@
       </div>
       </div>
     </section>
-    <section ng-controller="NytController as nyt">
-      <h1 ng-click="nyt.expand()">New York Times</h1>
+    <section class="section-media" ng-controller="NytController as nyt">
+      <h1 ng-click="nyt.expand()">The New York Times</h1>
       <div ng-show="nyt.expanded">
       <h2 ng-click="expandHome()">Top Stories</h2>
       <div ng-show="homeExpanded">
-        <div ng-repeat="story in nyt.homeStories | limitTo:10 track by $index">
+        <div class="story-nyt" ng-repeat="story in nyt.homeStories | limitTo:10 track by $index">
           <h3><a href="{{ story.url }}">{{ story.title }}</a></h3>
+          <img ng-src="{{ story.multimedia[1].url }}" alt="{{ story.multimedia[1].caption }}"/>
           <p ng-bind-html="story.abstract"></p>
-          <img ng-src="{{ story.multimedia[0].url }}" alt="{{
-          story.multimedia[1].caption }}"/>
         </div>
       </div>
       <h2 ng-click="expandHealth()">Health</h2>
       <div ng-show="healthExpanded">
-        <div ng-repeat="story in nyt.healthStories | limitTo:10 track by $index">
+        <div class="story-nyt" ng-repeat="story in nyt.healthStories | limitTo:10 track by $index">
           <h3><a href="{{ story.url }}">{{ story.title }}</a></h3>
+          <img ng-src="{{ story.multimedia[1].url }}" alt="{{ story.multimedia[1].caption }}"/>
           <p ng-bind-html="story.abstract"></p>
-          <img ng-src="{{ story.multimedia[0].url }}" alt="{{ story.multimedia[1].caption }}"/>
         </div>
       </div>
       </div>
     </section>
+    <footer ng-controller="WeatherController as weather">
+      <ul>
+        <li>Low: {{ weather.low | number:0 }}&deg;</li>
+        <li>{{ weather.description }}, {{ weather.morning | number:0 }}&deg;</li>
+        <li>High: {{ weather.high | number:0 }}&deg;</li>
+      </ul>
+    </footer>
   </article>
 </body>
 </html>

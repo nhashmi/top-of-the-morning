@@ -1,7 +1,106 @@
+/*
+ * Theme: #232534
+ * white: #e0e0e0
+ * yellow: #ffc500
+ https://color.adobe.com/create/color-wheel/?base=2&rule=Complementary&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.13725490196078433,0.1450980392156863,0.20392156862745098,0.09999999999999998,0.20588235294128476,1,0,0.11764705882364979,1,0.7,0.5414373814039208,0,1,0.7734819734341727,0&swatchOrder=0,1,2,3,4
+ */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 * {
   text-align: center;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #e0e0e0;
+  background-color: #232534;
+  font-size: 14px;
+}
+
+h1,
+h2 {
+  font-family: 'Droid Sans', serif;
+}
+
+.header {
+  background-color: #ffc500;
+  color: #232534;
+  width: 100%;
+  padding: 2vh 1vw;
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.header h2 {
+  font-size: 14px;
+}
+
+.section-media {
+  border-bottom: 1px solid #888fa0;
+  margin: 0 2vw 5vh;
+}
+
+.story-npr,
+.story-nyt {
+  border-bottom: 2px solid #B28A00;
+  margin: 1vh auto;
+}
+
+.story-npr h4 {
+  margin-top: 0;
+  color: #ffc500;
+  font-size: 14px;
+  font-variant: small-caps;
+}
+
+.story-nyt h3 {
+  font-size: 16px;
+}
+
+.story-nyt a {
+  text-decoration: none;
+  color: #e0e0e0;
+}
+
+footer {
+  background-color: #ffc500;
+  color: #232534;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  padding: 0 2vw;
+  font-variant: small-caps;
+}
+
+footer ul {
+  padding: 0;
+}
+
+footer li {
+  display: inline-block;
+}
+
+footer li:first-of-type {
+  float: left;
+}
+
+footer li:last-of-type {
+  float: right;
 }
 
 .faded {
   color: #b3b3b3;
 }
+
