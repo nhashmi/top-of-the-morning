@@ -10,3 +10,8 @@ add any necessary keys:
 ```
 OPEN_WEATHER_API_KEY=YOUR_KEY_HERE
 ```
+
+## To dos
+- Refactor controllers and move logic into services
+- Refactor src/index.html into component templates
+- Add test coverage
